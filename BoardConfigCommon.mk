@@ -96,6 +96,9 @@ TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
 
+# Exclude serif fonts for saving system.img size.
+EXCLUDE_SERIF_FONTS := true
+
 # UI
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
 
