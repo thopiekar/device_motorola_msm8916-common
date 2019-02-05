@@ -282,6 +282,10 @@ $(call inherit-product, device/motorola/msm8916-common/system_prop.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
+# Sensors
+PRODUCT_PACKAGES += \
+    libsensorndkbridge
+
 #PRODUCT_PACKAGES += \
 #    android.hardware.thermal@1.0-impl
 
