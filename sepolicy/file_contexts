@@ -56,3 +56,7 @@
 /dev/stml0xx_as                                             u:object_r:sensors_device:s0
 /dev/stml0xx_ms                                             u:object_r:sensors_device:s0
 /data/misc/akmd(/.*)?                                       u:object_r:sensors_data_file:s0
+
+# Camera
+/sys/devices(/platform)?/soc\.0/qcom,msm-cam\.[0-9]+/video4linux/v4l-subdev[0-9]+/name(/.*)?  u:object_r:sysfs_graphics:s0
+/sys/devices/virtual/video4linux/video[0-9]+/name(/.*)?  u:object_r:sysfs_graphics:s0
