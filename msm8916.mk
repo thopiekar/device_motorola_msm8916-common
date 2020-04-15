@@ -138,13 +138,6 @@ PRODUCT_PACKAGES += \
     memtrack.msm8916 \
     libtinyxml
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.surface_flinger.max_frame_buffer_acquired_buffers=3
-
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl
-
 # Ebtables
 PRODUCT_PACKAGES += \
     ebtables \
@@ -270,12 +263,12 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-service \
     libsensorndkbridge
 
+# System Properties
+$(call inherit-product, $(LOCAL_PATH)/system_prop.mk)		
+	   
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
-
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl
 
 # Trust
 PRODUCT_PACKAGES += \
@@ -316,12 +309,16 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
+# Optimize
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
+PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := true
+PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION := frameworks/base/config/boot-image-profile.txt
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
+PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false		  
+
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 $(call inherit-product-if-exists, vendor/motorola/msm8916-common/msm8916-common-vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
-
-# Common Android Go configurations
-$(call inherit-product, build/target/product/go_defaults.mk)
-
