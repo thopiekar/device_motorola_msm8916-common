@@ -118,6 +118,7 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
+
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.2-service.clearkey
@@ -140,10 +141,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3
-
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -273,9 +270,6 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
-
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl
 
 # Trust
 PRODUCT_PACKAGES += \
