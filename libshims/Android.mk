@@ -23,22 +23,30 @@ LOCAL_MODULE := libshims_camera
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
-# RIL + Qsap Shim
+# RIL
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := ASensorManager.cpp libqsap_shim.c
-LOCAL_SHARED_LIBRARIES := android.hardware.sensors@1.0 libqsap_sdk liblog
+LOCAL_SRC_FILES := ASensorManager.cpp
+LOCAL_SHARED_LIBRARIES := android.hardware.sensors@1.0 libandroid
 LOCAL_STATIC_LIBRARIES := android.hardware.sensors@1.0-convert
+LOCAL_MODULE := libshim_ril
+LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := libqsap_shim.c
+LOCAL_SHARED_LIBRARIES := libqsap_sdk liblog
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/qsap
 LOCAL_MODULE := libqsap_shim
-LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_TAGS := optional
 LOCAL_PROPRIETARY_MODULE := true
+LOCAL_VENDOR_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
 
 # QSAP_SDK
 include $(CLEAR_VARS)
 LOCAL_C_INCLUDES := $(TOP)/hardware/libhardware_legacy/wifi $(TOP)/external/libnl/include $(TOP)/external/wpa_supplicant_8/wpa_supplicant/src/drivers
-LOCAL_MODULE:= libqsap_sdk
+LOCAL_MODULE := libqsap_sdk
 LOCAL_MODULE_TAGS := optional
 LOCAL_VENDOR_MODULE := true
 LOCAL_CFLAGS += -DSDK_VERSION=\"0.0.1.0\"
