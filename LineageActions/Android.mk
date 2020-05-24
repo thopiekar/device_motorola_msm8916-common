@@ -1,6 +1,6 @@
 LOCAL_PATH:= $(call my-dir)
 
-# exclude harpia from CMActions
+# harpia is intentionally removed from the list below
 ifneq ($(filter lux merlin osprey surnia, $(TARGET_DEVICE)),)
 include $(CLEAR_VARS)
 
